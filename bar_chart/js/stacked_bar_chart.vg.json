@@ -1,0 +1,12 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 800,
+    "height": 600,
+    "data": { "url": "data/popDataPivotLong.csv" },
+    "mark": { "type": "bar" },
+    "encoding": {
+        "x": { "field": "State", "type": "nominal" },
+        "y": { "aggregate": "sum", "field": "Value" },
+        "color": { "field": "Race" }
+    }
+}
