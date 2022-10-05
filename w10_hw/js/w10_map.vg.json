@@ -45,7 +45,10 @@
       "type": "nominal"
     },
     "tooltip":[
-      {"field": "year", "type":"ordinal"}
+      {"field": "year", "type":"ordinal"},
+      {"field": "x", "type": "quantitative"},
+      {"field": "race", "type": "nominal"},
+      {"field": "state", "type": "nominal"}
     ]
   }
 }
