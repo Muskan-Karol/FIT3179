@@ -4,7 +4,7 @@
   "height": 450,
   "title": "fatal shooting in the US by a police officer in the line of duty in from 2016-2021",
   "data":{
-    "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/w10_hw/data/victims_16_21_max.csv", 
+    "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/w10_hw/data/victims_16_21_all.csv", 
     "name": "csv"       
   },
   "selection": {
@@ -14,10 +14,19 @@
     "bind": "legend"
     } 
   },
+  "transform": [
+    {
+      "filter":{"field": "x", "range":[0, 10]}
+    },
+    {
+      "aggregate": [{"op": "mean", "as": "med_val", "field": "x"}],
+      "groupby": ["year", "race"]
+    }
+  ],
   "mark": "line",
   "encoding": {
     "x": {"field": "year", "type": "ordinal", "scale":{"padding":0.5}},
-    "y": {"aggregate": "mean", "field": "x", "type": "quantitative"},
+    "y": {"field": "med_val", "type": "quantitative"},
     "color": {
       "field": "race", 
       "type": "nominal"
