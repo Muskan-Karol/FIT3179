@@ -1,0 +1,30 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 450,
+  "title": "fatal shooting in the US by a police officer in the line of duty in from 2016-2021",
+  "data":{
+    "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/w10_hw/data/victims_16_21_max.csv", 
+    "name": "csv"       
+  },
+  "selection": {
+    "race_highlight": {
+    "type": "multi",
+    "fields": ["race"],
+    "bind": "legend"
+    } 
+  },
+  "mark": "line",
+  "encoding": {
+    "x": {"field": "year", "type": "ordinal", "scale":{"padding":0.5}},
+    "y": {"aggregate": "mean", "field": "x", "type": "quantitative"},
+    "color": {
+      "field": "race", 
+      "type": "nominal"
+  },
+  "opacity": {
+    "condition": {"selection": "race_highlight", "value": 0.6},
+    "value": 0.2}
+  }
+
+}
