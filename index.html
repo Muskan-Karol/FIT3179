@@ -10,12 +10,25 @@
 </head>
 <body>
   
-<div id="map"></div>
+  <h1> "Map" </h1>
+  <div id="map"></div>
+
+  <script type="text/javascript">
+
+    var spec2 = "map/js/map.vg.json";
+    vegaEmbed('#map', spec2).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+  </script>
+
+
+<h1> "Line" </h1>
+<div id="line"></div>
 
 <script type="text/javascript">
 
-  var spec2 = "js/w9_map.vg.json";
-  vegaEmbed('#map', spec2).then(function(result) {
+  var spec1 = "w10_hw/js/w10_line.vg.json";
+  vegaEmbed('#line', spec1).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 </script>

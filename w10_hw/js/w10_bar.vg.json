@@ -1,54 +1,36 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 800,
-  "height": 450,
-  "title": "fatal shooting in the US by a police officer in the line of duty in 2022 every 100,000",
-  "projection": {"type": "albersUsa"},
+  "height": 500,
+  "title": "fatal shooting in the US by a police officer every 100,000",
   "data":{
-    "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/map/js/ne_110m_admin_1_states_provinces.topojson", 
-    "format": {"type": "topojson", "feature": "ne_110m_admin_1_states_provinces"}, 
-    "name": "topoJson"       
+    "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/w10_hw/data/StatsByRace.csv",
+    "name": "csv"       
   },
   "params": [
     {
-      "name": "year_selection",
+      "name": "race_select",
       "bind":{
         "input": "select",
-        "options": ["2016", "2018", "2020", "2021"],
-        "labels": ["2016", "2018", "2020", "2021"],
-        "name": "Select Year: "
+        "options": ["A", "B", "H", "N", "O", "W"],
+        "labels": ["A", "B", "H", "N", "O", "W"],
+        "name": "Select Race: "
       }
     }
   ],
   "transform": [
     {
-      "lookup": "properties.postal",
-      "from":{
-        "data":{
-          "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/w10_hw/data/victims_16_21_max.csv"
-        },
-        "key": "state",
-        "fields": ["year", "race", "state", "x"]
-      }
+      "filter":{
+        "field": "Issue", 
+        "oneOf":["unarmed_per", "body_camera_false_per", "signs_of_mental_illness_true_per"]}
     },
-    {"filter": {
-      "field": "year", 
-      "equal": "year_selection",
-      "timeUnit":"year"      
-      }
+    {
+      "filter":"datum.race == race_select"
     }
   ],
-  "mark":{"type": "geoshape"},
+  "mark":{"type": "bar"},
   "encoding": {
-    "color":{
-      "field": "race",
-      "type": "nominal"
-    },
-    "tooltip":[
-      {"field": "year", "type":"ordinal"},
-      {"field": "x", "type": "quantitative"},
-      {"field": "race", "type": "nominal"},
-      {"field": "state", "type": "nominal"}
-    ]
+    "x":{"field": "Issue", "type": "nominal", "axis": {"labelAngle": 0}},
+    "y":{"field": "Value", "type": "quantitative"}
   }
 }
