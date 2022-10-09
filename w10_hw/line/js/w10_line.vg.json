@@ -4,7 +4,7 @@
   "height": 450,
   "title": "Victims of fatal police shooting, by race, in the US from 2016-2021, per 100,000 population",
   "data":{
-    "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/w10_hw/data/victims_16_21_all.csv", 
+    "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/w10_hw/line/data/victims_16_21_all.csv", 
     "name": "csv"       
   },
   "transform": [

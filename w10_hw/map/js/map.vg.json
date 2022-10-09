@@ -14,7 +14,7 @@
       "lookup": "properties.postal",
       "from":{
         "data":{
-          "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/map/data/victimsByRace.csv"
+          "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/w10_hw/map/data/victimsByRace.csv"
         },
         "key": "state",
         "fields": ["state", "StateFullName", "TotalVictimsInState", "Population"]
