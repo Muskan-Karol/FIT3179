@@ -1,0 +1,70 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Victimes of police shooting (2020)",
+  "width": 800,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/bar_chart/data/fatal-police-shootings-data.csv",
+    "name":"police"
+  },
+  "transform": [
+    {
+      "filter":{
+        "field": "race", 
+        "oneOf":["W", "O", "B", "H", "N", "A"]
+        }
+    },
+    {
+      "filter":{
+        "field": "date", 
+        "timeUnit":"date", 
+        "range":["31/12/2019", "01/01/2021"]}
+    },
+    {
+      "aggregate": [{"op": "count", "as": "num_victims"}],
+      "groupby": ["race"]
+    },
+    {
+      "window": [{
+        "op": "sum", 
+        "field": "num_victims", 
+        "as": "TotalVictims"}],
+        "frame": [null, null]
+    },
+    {
+    "calculate": "datum.num_victims/datum.TotalVictims * 100",
+    "as": "PercentOfTotal"
+    },
+    {
+      "lookup": "race",
+      "from" :{
+        "data":{
+          "url" :"https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/bar_chart/data/USPopDataPer2021.csv"
+        },
+        "key":"Race",
+        "fields":["Value", "ValuePercent"]
+      }
+    }
+  ],  
+  "encoding": { "x": {"field": "race", "type": "nominal"}},
+  "layer": [
+    {
+      "mark": {"type": "bar", "xOffset":-18, "size":30, "color": "lightblue"},
+      "encoding": {
+        "y":{
+          "field":"ValuePercent",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "mark": {"type": "bar", "xOffset":18, "size":30, "color": "darkred"},
+      "encoding": {
+        "y":{
+          "field": "PercentOfTotal",
+          "type": "quantitative"
+        }
+      }
+    }
+  ]  
+}

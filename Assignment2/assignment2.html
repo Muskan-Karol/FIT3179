@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <script src="vega_lite_vis.js"></script>
+  
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css" />
+
+  <link rel="stylesheet" href="css/layout.css">
+
+</head>
+<body>
+
+  <div class="overall">
+    <h1> <span style="color: #ae0404;"> FATAL </span> POLICE SHOOTINGS </h1>
+    <br>
+
+    <div id='text_div'>
+      <p>This will have the intro</p>
+    </div>
+
+    <br>
+
+    <div class="section-1">
+      <h2> Police Shooting from 2016-2021 </h2>
+      <div id="line_chart">
+
+      </div>
+    </div>
+
+    <br>
+
+    <div class="section-2">
+      <h2> Map </h2>
+      <div id="map">
+
+      </div>
+    </div>
+
+    <br>
+    
+    <div class="section-3">
+      <h2> Bar Chart</h2>
+      <div id="bar_chart">
+
+      </div>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+    var spec1 = "line_chart/js/line.vg.json";
+    vegaEmbed('#line_chart', spec1).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+  </script>
+
+
+  <script type="text/javascript">
+    var spec2 = "map/js/map.vg.json";
+    vegaEmbed('#map', spec2).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+  </script>
+
+  <script type="text/javascript">
+    var spec3 = "bar_chart/js/race_bar_chart.vg.json";
+    vegaEmbed('#bar_chart', spec3).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+  </script>
+
+</body>
+</html>
