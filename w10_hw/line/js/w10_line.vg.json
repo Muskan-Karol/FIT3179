@@ -37,7 +37,11 @@
         "opacity":{
           "condition": {"param": "race_highlight", "value": 0.8},
           "value": 0.2
-        }
+        },
+        "tooltip":[
+          {"field": "race", "type": "nominal"},
+          {"field":"med_val", "type": "quantitative",  "format":".2f", "title":"victims"}
+        ]
       }
     },
     {
