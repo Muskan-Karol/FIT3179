@@ -7,13 +7,6 @@
     "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/w10_hw/data/victims_16_21_all.csv", 
     "name": "csv"       
   },
-  "selection": {
-    "race_highlight": {
-    "type": "multi",
-    "fields": ["race"],
-    "bind": "legend"
-    } 
-  },
   "transform": [
     {
       "filter":{"field": "x", "range":[0, 10]}
@@ -23,7 +16,6 @@
       "groupby": ["year", "race"]
     }
   ],
-  "mark": {"type": "line", "point":true},
   "encoding": {
     "x": {"field": "year", "type": "ordinal", "axis": {"labelAngle": 0}},
     "y": {"field": "med_val", "type": "quantitative", "title": "Victims per 100,000"},
@@ -31,9 +23,42 @@
       "field": "race", 
       "type": "nominal",
       "scale": {"scheme": "dark2"}
+    }
   },
-  "opacity": {
-    "condition": {"selection": "race_highlight", "value": 0.6},
-    "value": 0.2}
-  }
+  "layer":[
+    {
+      "params": [{
+        "name": "race_highlight",
+        "select": {"type": "point", "fields": ["race"]},
+        "bind": "legend"
+      }],
+      "mark": {"type": "line", "point": true},
+      "encoding": {
+        "opacity":{
+          "condition": {"param": "race_highlight", "value": 0.8},
+          "value": 0.2
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text", 
+        "align": "center",
+        "fontSize": 11,
+        "dx": 10,
+        "dy": -10
+      },
+      "encoding": {
+        "text": {"field": "med_val", "type":"quantitative",  "format":".2f"},
+        "color": {"value": "black"},
+        "opacity":{
+          "condition":{
+            "test": "datum['med_val'] > 3 & datum['race']== 'N' || datum['med_val'] > 1 & datum['race']== 'B' || datum['med_val'] < 0.22 ",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    }
+  ]
 }
