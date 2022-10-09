@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 800,
-    "height": 450,
-  "title": "fatal shooting in the US by a police officer in the line of duty in 2021 every 100,000",
+  "height": 450,
+  "title": "Fatal shooting in the US by a police officer in the line of duty in 2021, for every 100,000",
   "projection": {"type": "albersUsa"},
   "data":{
     "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/map/js/ne_110m_admin_1_states_provinces.topojson", 
@@ -17,19 +17,21 @@
           "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/map/data/victimsByRace.csv"
         },
         "key": "state",
-        "fields": ["state", "TotalVictimsInState", "Value"]
+        "fields": ["state", "StateFullName", "TotalVictimsInState", "Population"]
       }
     },
-    {"calculate": "datum.TotalVictimsInState/datum.Value * 100000", "as": "cases"}
+    {"calculate": "datum.TotalVictimsInState/datum.Population * 100000", "as": "cases"}
   ],
   "mark":{"type": "geoshape"},
   "encoding": {
     "color":{
       "field": "cases",
-      "type": "quantitative"
+      "type": "quantitative",
+      "scale": {"scheme": "orangered"}
     },
     "tooltip":[
-      {"field":"state", "type": "nominal"}
+      {"field":"StateFullName", "type": "nominal"},
+      {"field": "cases", "type": "quantitative", "format":".2f"}
     ]
   }
 }
