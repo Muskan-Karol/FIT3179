@@ -5,7 +5,7 @@
   "title": "Fatal shooting in the US by a police officer in the line of duty in 2021, per 100,000 population",
   "projection": {"type": "albersUsa"},
   "data":{
-    "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/map/js/ne_110m_admin_1_states_provinces.topojson", 
+    "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/w10_hw/map/js/ne_110m_admin_1_states_provinces.topojson", 
     "format": {"type": "topojson", "feature": "ne_110m_admin_1_states_provinces"}, 
     "name": "topoJson"       
   },
