@@ -3,68 +3,64 @@
   "title": "Victimes of police shooting (2020)",
   "width": 800,
   "height": 400,
+  "config": {
+    "view": {"stroke": null},
+    "background": "#fcf2e9"
+  },
   "data": {
     "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/Assignment2/bar_chart/data/fatal-police-shootings-data.csv",
-    "name":"police"
+    "name": "police"
   },
   "transform": [
+    {"filter": {"field": "race", "oneOf": ["W", "O", "B", "H", "N", "A"]}},
     {
-      "filter":{
-        "field": "race", 
-        "oneOf":["W", "O", "B", "H", "N", "A"]
-        }
+      "filter": {
+        "field": "date",
+        "timeUnit": "date",
+        "range": ["31/12/2019", "01/01/2021"]
+      }
+    },
+    {"aggregate": [{"op": "count", "as": "num_victims"}], "groupby": ["race"]},
+    {
+      "window": [{"op": "sum", "field": "num_victims", "as": "TotalVictims"}],
+      "frame": [null, null]
     },
     {
-      "filter":{
-        "field": "date", 
-        "timeUnit":"date", 
-        "range":["31/12/2019", "01/01/2021"]}
-    },
-    {
-      "aggregate": [{"op": "count", "as": "num_victims"}],
-      "groupby": ["race"]
-    },
-    {
-      "window": [{
-        "op": "sum", 
-        "field": "num_victims", 
-        "as": "TotalVictims"}],
-        "frame": [null, null]
-    },
-    {
-    "calculate": "datum.num_victims/datum.TotalVictims * 100",
-    "as": "PercentOfTotal"
+      "calculate": "datum.num_victims/datum.TotalVictims * 100",
+      "as": "PercentOfTotal"
     },
     {
       "lookup": "race",
-      "from" :{
-        "data":{
-          "url" :"https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/bar_chart/data/USPopDataPer2021.csv"
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/Assignment2/bar_chart/data/USPopDataPer2021.csv"
         },
-        "key":"Race",
-        "fields":["Value", "ValuePercent"]
+        "key": "Race",
+        "fields": ["Value", "ValuePercent"]
       }
     }
-  ],  
-  "encoding": { "x": {"field": "race", "type": "nominal"}},
+  ],
+  "encoding": {
+    "x": {
+      "field": "race", 
+      "type": "nominal",
+      "axis": {"grid": false}
+    }
+  },
   "layer": [
     {
-      "mark": {"type": "bar", "xOffset":-18, "size":30, "color": "lightblue"},
+      "mark": {"type": "bar", "xOffset": -18, "size": 30, "color": "#ff8c66"},
       "encoding": {
-        "y":{
-          "field":"ValuePercent",
-          "type": "quantitative"
+        "y": {
+          "field": "ValuePercent", 
+          "type": "quantitative",
+          "axis": {"grid": false}
         }
       }
     },
     {
-      "mark": {"type": "bar", "xOffset":18, "size":30, "color": "darkred"},
-      "encoding": {
-        "y":{
-          "field": "PercentOfTotal",
-          "type": "quantitative"
-        }
-      }
+      "mark": {"type": "bar", "xOffset": 18, "size": 30, "color": "darkred"},
+      "encoding": {"y": {"field": "PercentOfTotal", "type": "quantitative"}}
     }
-  ]  
+  ]
 }

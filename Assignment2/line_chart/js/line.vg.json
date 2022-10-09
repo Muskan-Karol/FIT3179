@@ -3,38 +3,47 @@
   "width": 800,
   "height": 450,
   "title": "Victims of fatal police shooting, by race, in the US from 2016-2021, per 100,000 population",
-  "data":{
-    "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/Assignment2/line_chart/data/victims_16_21_all.csv", 
-    "name": "csv"       
+  "config": {
+    "view": {"stroke": null},
+    "background": "#fcf2e9"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/Assignment2/line_chart/data/victims_16_21_all.csv",
+    "name": "csv"
   },
   "transform": [
-    {
-      "filter":{"field": "x", "range":[0, 10]}
-    },
+    {"filter": {"field": "x", "range": [0, 10]}},
     {
       "aggregate": [{"op": "mean", "as": "med_val", "field": "x"}],
       "groupby": ["year", "race"]
     }
   ],
   "encoding": {
-    "x": {"field": "year", "type": "ordinal", "axis": {"labelAngle": 0}},
-    "y": {"field": "med_val", "type": "quantitative", "title": "Victims per 100,000"},
-    "color": {
-      "field": "race", 
-      "type": "nominal",
-      "scale": {"scheme": "dark2"}
-    }
+    "x": {
+      "field": "year", 
+      "type": "ordinal", 
+      "axis": {"labelAngle": 0, "grid": false}
+    },
+    "y": {
+      "field": "med_val",
+      "type": "quantitative",
+      "title": "Victims per 100,000",
+      "axis": {"grid": false}
+    },
+    "color": {"field": "race", "type": "nominal", "scale": {"scheme": "dark2"}}
   },
-  "layer":[
+  "layer": [
     {
-      "params": [{
-        "name": "race_highlight",
-        "select": {"type": "point", "fields": ["race"]},
-        "bind": "legend"
-      }],
+      "params": [
+        {
+          "name": "race_highlight",
+          "select": {"type": "point", "fields": ["race"]},
+          "bind": "legend"
+        }
+      ],
       "mark": {"type": "line", "point": true},
       "encoding": {
-        "opacity":{
+        "opacity": {
           "condition": {"param": "race_highlight", "value": 0.8},
           "value": 0.2
         }
@@ -42,17 +51,17 @@
     },
     {
       "mark": {
-        "type": "text", 
+        "type": "text",
         "align": "center",
         "fontSize": 11,
         "dx": 10,
         "dy": -10
       },
       "encoding": {
-        "text": {"field": "med_val", "type":"quantitative",  "format":".2f"},
+        "text": {"field": "med_val", "type": "quantitative", "format": ".2f"},
         "color": {"value": "black"},
-        "opacity":{
-          "condition":{
+        "opacity": {
+          "condition": {
             "test": "datum['med_val'] > 3 & datum['race']== 'N' || datum['med_val'] > 1 & datum['race']== 'B' || datum['med_val'] < 0.22 ",
             "value": 1
           },

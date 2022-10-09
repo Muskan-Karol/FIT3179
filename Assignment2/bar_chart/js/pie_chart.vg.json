@@ -1,0 +1,35 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 450,
+  "title": "Victims of fatal police shooting, by race, in the US from 2016-2021, per 100,000 population",
+  "config": {
+    "view": {"stroke": null},
+    "background": "#fcf2e9"
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/Assignment2/bar_chart/data/fatal-police-shootings-data.csv",
+    "name": "csv"
+  },
+  "transform": [
+    {
+      "aggregate": [{"op": "count", "as": "pint"}],
+      "groupby": ["signs_of_mental_illness"]
+    }
+  ],
+  "encoding": {
+    "theta":{"field": "pint", "type": "quantitative", "stack": true},
+    "color": {"field": "signs_of_mental_illness", "type": "nominal", "legend":null}
+  },
+  "layer":[
+    {
+      "mark": {"type": "arc", "innerRadius": 190, "outerRadius": 70}
+    },
+    {
+      "mark": {"type": "text", "radius": 210},
+      "encoding": {
+        "text": {"field": "signs_of_mental_illness", "type": "nominal"}
+      }
+    }
+  ]
+}
