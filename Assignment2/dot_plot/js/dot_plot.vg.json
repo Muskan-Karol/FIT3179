@@ -1,0 +1,27 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "view": {"stroke": null},
+    "background": "#fcf2e9"
+  },
+  "width": 700,
+  "height": 150,
+  "title": "Female vs Male victims of police shootings",
+  "data": {
+    "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/Assignment2/dot_plot/data/fvm.csv",
+    "name": "csv"
+  },
+  "transform": [
+    {
+      "calculate": "{'F': '♀︎', 'M': '♂︎'}[datum.gender]",
+      "as": "emoji"
+    },
+    {"window": [{"op": "rank", "as": "rank"}], "groupby": ["country", "animal"]}
+  ],
+  "mark":{"type": "text", "baseline": "middle"},
+  "encoding": {
+    "x": {"field": "rank", "type": "nominal", "axis": null},
+    "text": {"field": "emoji", "type": "nominal"},
+    "size": {"value": 60}
+  }
+}
