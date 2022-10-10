@@ -34,18 +34,25 @@
 
     <br>
     
-    <div class="section-3">
+    <div class="section-2">
       <h2> Bar Chart</h2>
       <div id="bar_chart">
 
       </div>
     </div>
+
+    <div class="section-3">
+      <h2> Pie Chart</h2>
+      <div id="pie_chart">
+
+      </div>
+
   </div>
 
 
   <script type="text/javascript">
-    var spec1 = "line_chart/js/line.vg.json";
-    vegaEmbed('#line_chart', spec1).then(function(result) {
+    var spec1 = "pie_chart/js/pie_chart.vg.json";
+    vegaEmbed('#pie_chart', spec1).then(function(result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
   </script>

@@ -41,6 +41,11 @@ h2 {
     text-align: center;
 }
 
+#pie_chart{
+    width: 30px;
+    height: 20vw;
+}
+
 p {
     font-size: 16px;
 }
