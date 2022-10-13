@@ -1,6 +1,7 @@
 html,
 body {
     background-color: #fcf2e9;
+    width: 100%;
 }
 
 .overall {
@@ -8,22 +9,14 @@ body {
     font-family: Verdana;
 }
 
-#text_div {
-    text-align: center;
-}
-
-.section-1 {
-    margin-top: 1px;
-    margin-bottom: 50px;
-    height: 30vw;
-    text-align: center;
-}
-
-.section-2 {
+.pure-u-1-1 {
     margin-top: 100px;
-    margin-bottom: 30px;
-    height: 30vw;
     text-align: center;
+}
+
+.pure-g {
+    text-align: center;
+    margin: 0%;
 }
 
 .pure-u-1-2 {
@@ -31,10 +24,10 @@ body {
     height: 30vw;
 }
 
-.pure-u-1-1 {
-    margin-top: 30px;
+#text_div {
     text-align: center;
 }
+
 
 h1 {
     text-align: center;
@@ -52,11 +45,4 @@ p {
 
 .vis-container {
     width: 50%;
-}
-
-#pie_chart {
-    margin-left: 30px;
-    margin-right: 100px;
-    height: 20px;
-    width: 5px;
 }

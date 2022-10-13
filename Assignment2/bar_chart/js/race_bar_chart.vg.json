@@ -1,14 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Victimes of police shooting (2020)",
+  "title": "Victims of police shooting (2021)",
   "width": 800,
   "height": 400,
-  "config": {
-    "view": {"stroke": null},
-    "background": "#fcf2e9"
-  },
+  "config": {"view": {"stroke": null}, "background": "#fcf2e9"},
   "data": {
-    "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/Assignment2/bar_chart/data/fatal-police-shootings-data.csv",
+    "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/Assignment2/bar_chart/data/fatal-police-shooting-race.csv",
     "name": "police"
   },
   "transform": [
@@ -17,10 +14,13 @@
       "filter": {
         "field": "date",
         "timeUnit": "date",
-        "range": ["31/12/2019", "01/01/2021"]
+        "range": ["31/12/2020", "01/01/2022"]
       }
     },
-    {"aggregate": [{"op": "count", "as": "num_victims"}], "groupby": ["race"]},
+    {
+      "aggregate": [{"op": "count", "as": "num_victims"}],
+      "groupby": ["raceFullName"]
+    },
     {
       "window": [{"op": "sum", "field": "num_victims", "as": "TotalVictims"}],
       "frame": [null, null]
@@ -30,21 +30,21 @@
       "as": "PercentOfTotal"
     },
     {
-      "lookup": "race",
+      "lookup": "raceFullName",
       "from": {
         "data": {
           "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/Assignment2/bar_chart/data/USPopDataPer2021.csv"
         },
-        "key": "Race",
+        "key": "raceFullName",
         "fields": ["Value", "ValuePercent"]
       }
     }
   ],
   "encoding": {
     "x": {
-      "field": "race", 
+      "field": "raceFullName",
       "type": "nominal",
-      "axis": {"grid": false}
+      "axis": {"grid": false, "labelAngle": 0}
     }
   },
   "layer": [
@@ -52,15 +52,23 @@
       "mark": {"type": "bar", "xOffset": -18, "size": 30, "color": "#ff8c66"},
       "encoding": {
         "y": {
-          "field": "ValuePercent", 
+          "field": "ValuePercent",
           "type": "quantitative",
           "axis": {"grid": false}
-        }
+        },
+        "tooltip":[
+          {"field": "ValuePercent"}
+        ]
       }
     },
     {
       "mark": {"type": "bar", "xOffset": 18, "size": 30, "color": "darkred"},
-      "encoding": {"y": {"field": "PercentOfTotal", "type": "quantitative"}}
+      "encoding": {
+        "y": {"field": "PercentOfTotal", "type": "quantitative"},
+        "tooltip":[
+          {"field": "PercentOfTotal", "format": ".2f"}
+        ]
+      }
     }
   ]
 }

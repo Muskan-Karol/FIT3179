@@ -1,0 +1,53 @@
+html,
+body {
+    background-color: #fcf2e9;
+    width: 100%;
+}
+
+.overall {
+    color: black;
+    font-family: Verdana;
+}
+
+.pure-u-1-1 {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.pure-g {
+    text-align: center;
+    align-items: center;
+    align-self: center;
+    width:fit-content;
+}
+
+.pure-u-1-2 {
+    margin-top: 100px; 
+}
+
+#dot_plot {
+    margin-left: 0%;
+}
+
+#text_div {
+    text-align: center;
+}
+
+
+h1 {
+    text-align: center;
+    font-size: 40px;
+}
+
+h2 {
+    text-align: center;
+}
+
+
+p {
+    font-size: 16px;
+}
+
+.vis-container {
+    width: 50%;
+}
