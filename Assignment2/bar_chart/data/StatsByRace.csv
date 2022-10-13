@@ -1,0 +1,43 @@
+,race,Issue,Value,raceFullName
+1,A,armed_per,90.27,Asian
+2,A,unarmed_per,7.08,Asian
+3,A,body_camera_true_per,21.24,Asian
+4,A,body_camera_false_per,78.76,Asian
+5,A,signs_of_mental_illness_true_per,25.66,Asian
+6,A,signs_of_mental_illness_false_per,74.34,Asian
+7,A,attack_per,52.21,Asian
+8,B,armed_per,85.06,Black
+9,B,unarmed_per,8.54,Black
+10,B,body_camera_true_per,19.5,Black
+11,B,body_camera_false_per,80.5,Black
+12,B,signs_of_mental_illness_true_per,15.17,Black
+13,B,signs_of_mental_illness_false_per,84.83,Black
+14,B,attack_per,66.45,Black
+15,H,armed_per,86.52,Hispanic
+16,H,unarmed_per,7.36,Hispanic
+17,H,body_camera_true_per,14.98,Hispanic
+18,H,body_camera_false_per,85.02,Hispanic
+19,H,signs_of_mental_illness_true_per,17.02,Hispanic
+20,H,signs_of_mental_illness_false_per,82.98,Hispanic
+21,H,attack_per,58.16,Hispanic
+22,N,armed_per,82.65,Native American
+23,N,unarmed_per,7.14,Native American
+24,N,body_camera_true_per,17.35,Native American
+25,N,body_camera_false_per,82.65,Native American
+26,N,signs_of_mental_illness_true_per,16.33,Native American
+27,N,signs_of_mental_illness_false_per,83.67,Native American
+28,N,attack_per,57.14,Native American
+29,O,armed_per,80.85,Other
+30,O,unarmed_per,10.64,Other
+31,O,body_camera_true_per,12.77,Other
+32,O,body_camera_false_per,87.23,Other
+33,O,signs_of_mental_illness_true_per,21.28,Other
+34,O,signs_of_mental_illness_false_per,78.72,Other
+35,O,attack_per,65.96,Other
+36,W,armed_per,88.43,White
+37,W,unarmed_per,5.6,White
+38,W,body_camera_true_per,11.13,White
+39,W,body_camera_false_per,88.87,White
+40,W,signs_of_mental_illness_true_per,28.3,White
+41,W,signs_of_mental_illness_false_per,71.7,White
+42,W,attack_per,65.07,White
