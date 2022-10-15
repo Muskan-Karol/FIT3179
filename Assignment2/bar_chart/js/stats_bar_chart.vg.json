@@ -1,0 +1,66 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {"view": {"stroke": null}, "background": "#fcf2e9"},
+  "width": 600,
+  "height": 400,
+  "title": "fatal shooting in the US by a police officer every 100,000",
+  "data": {
+    "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/Assignment2/bar_chart/data/StatsByRace.csv",
+    "name": "csv"
+  },
+  "params": [
+    {
+      "name": "raceSelection",
+      "bind": {
+        "input": "select",
+        "options": ["A", "B", "H", "N", "O", "W"],
+        "labels": [
+          "Asian",
+          "Black",
+          "Hispanic",
+          "Native American",
+          "Other",
+          "White"
+        ],
+        "name": "Select Race: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": {
+        "field": "Issue",
+        "oneOf": [
+          "unarmed_per",
+          "body_camera_false_per",
+          "attack_per"
+        ]
+      }
+    },
+    {"filter": "datum.race == raceSelection"}
+  ],
+  "encoding": {
+    "x": {
+      "field": "Issue", 
+      "type": "nominal", 
+      "axis": {"labelAngle": 0}
+    },
+    "y": {
+      "field": "IssueValue",
+      "type": "quantitative",
+      "axis":{"grid": false}
+    },
+    "color": {
+      "legend": {"labelExpr": "{'unarmed_per': 'Unarmed', 'body_camera_false_per': 'Body Camera Off', 'attack_per': 'Attacked Police'}[datum.Issue]"}
+    }
+  },
+  "layer": [
+    { 
+      "mark": {"type": "bar", "color": "darkred", "opacity": 0.5, "width": 80}
+    },
+    {
+      "mark": {"type": "text", "align":"center", "baseline":"line-top", "dy":-12, "size":12}, 
+      "encoding": {"text": {"field":"IssueValue"}}
+    }
+  ]
+}

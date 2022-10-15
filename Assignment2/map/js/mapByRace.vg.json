@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 800,
+  "width": 700,
   "height": 450,
   "config": {"view": {"stroke": null}, "background": "#fcf2e9"},
   "title": "fatal shooting in the US by a police officer in the line of duty in 2021 every 100,000",
@@ -25,23 +25,33 @@
       }
     }
   ],
-  "mark": {"type": "geoshape"},
+  "mark": {"type": "geoshape", "stroke": "white"},
   "encoding": {
     "color": {
       "field": "raceFullName",
       "type": "nominal",
       "scale": {
-        "domain": ["White", "Black", "Native American", "Asian", "Hispanic", "Other"],
+        "domain": [
+          "White",
+          "Black",
+          "Asian",
+          "Native American",
+          "Hispanic",
+          "Other"
+        ],
         "range": [
-          "#8B3A1C",
-          "#db724b",
-          "#58907e",
-          "#83242B",
-          "#123228",
-          "#34AF88"
+          "#c7452e",
+          "#f68b55",
+          "#9e0805 ",
+          "#ffc6b3",
+          "#810636",
+          "#557A54"
         ]
       }
     },
-    "tooltip": [{"field": "raceFullName"}, {"field": "VictimsPer100000"}]
+    "tooltip": [
+      {"field": "raceFullName", "title": "Race"}, 
+      {"field": "VictimsPer100000", "title": "Victims per 100,000 population"}
+    ]
   }
 }

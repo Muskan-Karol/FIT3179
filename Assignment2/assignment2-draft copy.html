@@ -10,32 +10,42 @@
   <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
   <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css" />
 
-  <link rel="stylesheet" href="css/layout-draft copy.css">
+  <link rel="stylesheet" href="css/layout-draft.css">
 
 </head>
 <body>
 
   <div class="overall">
-    <h1> <span style="color: darkred;"> FATAL </span> POLICE SHOOTINGS </h1>
-    <br>
 
-    <div id='text_div'>
-      <p>This will have the intro</p>
+    <h1> <span style="color: darkred;"> FATAL </span> POLICE SHOOTINGS </h1>
+
+    <div id='section-1'>
+      <p>
+        From 2015 - 2022, <span style="color: darkred; font-size: 20px;"> <b> 7743 </b> </span>
+        people have been killed by police in the United States.
+        In this visualisation we will explore these fatal police shootings and their victims
+        I need to write more
+        I need to write more
+        I need to write more 
+        I need to write more
+        I need to write more
+        I need to write more
+        I need to write more
+        I need to write more
+
+      </p>
     </div>
 
-    <br>
 
     <div class="pure-u-1-1">
-      <h2> Map </h2>
+      <h2> <span style="color: darkred;"> 1054 </span> people were killed by police in 2021 </h2>
+      <br>
       <div id="map">
       
       </div>
     </div>
 
-    <div class="pure-u-1-1">
-      <h2>Only <span style="color: darkred;"> 4.5% </span> of the victims were females</h2>
-      <div id="dot_plot" class="vis-container"></div> 
-    </div> 
+    <br>
 
     <div class="pure-g">
       <div class="pure-u-1-2">
@@ -45,25 +55,48 @@
     
      
       <div class="pure-u-1-2">
-        <div id="text-div">
-          <p> about mental illness and gender </p>
-        </div> 
+        <h2>Only <span style="color: darkred;"> 4.5% </span> of the victims were females</h2>
+        <div id="dot_plot" class="vis-container"></div> 
       </div>
 
     </div>
+
 
     <br>
     
+    <br>
+    <h2> Imbalance between different <span style="color: darkred;">Race/Ethnicity</span> Groups </h2>
+        
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div id="bar_chart">
+  
+        </div>
+      </div>
+
+      <div class="pure-u-1-2">
+        <div id='text_div'>
+          <br>
+          <br>
+          <br>
+          <h3>A <span style="color: darkred;">black</span> person is more likely to be killed by a police officer than a white person</h3>
+          <p> Even though Black people account for 12.4% of total population in the US, they accounted for <span style="color: darkred;"> <b>27.27%</b> </span> of victims of police shootings.</p>
+          <p> While, white people account for 59.2% of the total population and they are 51% of the victims of death by police shootings</p>
+        </div>
+        
+      </div>
+    </div>
+    
+
     <div class="pure-u-1-1">
-      <h2> Bar Chart</h2>
-      <p> Even though Black people account for 12.4% of total population in the US, they are 27.27% of victims of police shootings</p>
-      <div id="bar_chart">
+      <h3>New bar chart</h3>
+      <div id="bar_chart2"> 
 
       </div>
     </div>
 
-    <div class="pure-u-1-1">
-      <h2> Map 2</h2>
+    <div class="pure-u-1-1" style="background-color: rgb(255, 217, 0);">
+      <h4>In most states, black people have the highest rate of deaths per 100,000 population</h4>
       <div id="map_2">
 
       </div>
@@ -95,16 +128,21 @@
   </script>
 
   <script type="text/javascript">
-    var spec3 = "dot_plot/js/dot_plot.vg.json";
-    vegaEmbed('#dot_plot', spec3).then(function(result) {
+    var spec4 = "dot_plot/js/dot_plot.vg.json";
+    vegaEmbed('#dot_plot', spec4).then(function(result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
   </script>
 
   <script type="text/javascript">
-    var spec3 = "map/js/mapByRace.vg.json";
-    vegaEmbed('#map_2', spec3).then(function(result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    var spec5 = "bar_chart/js/stats_bar_chart.vg.json";
+    vegaEmbed('#bar_chart2', spec5).then(function(result) {
+    }).catch(console.error);
+  </script>
+
+  <script type="text/javascript">
+    var spec6 = "map/js/mapByRace.vg.json";
+    vegaEmbed('#map_2', spec6).then(function(result) {
     }).catch(console.error);
   </script>
 

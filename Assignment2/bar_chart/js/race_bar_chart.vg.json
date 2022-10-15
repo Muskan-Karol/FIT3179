@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Victims of police shooting (2021)",
-  "width": 800,
+  "title": "Victims of police shooting vs % of people in population, by race (2021)",
+  "width": 500,
   "height": 400,
   "config": {"view": {"stroke": null}, "background": "#fcf2e9"},
   "data": {
@@ -44,29 +44,33 @@
     "x": {
       "field": "raceFullName",
       "type": "nominal",
-      "axis": {"grid": false, "labelAngle": 0}
+      "axis": {"grid": false, "labelAngle": 0},
+      "title": "Race"
     }
   },
   "layer": [
     {
-      "mark": {"type": "bar", "xOffset": -18, "size": 30, "color": "#ff8c66"},
+      "mark": {"type": "bar", "xOffset": -15, "size": 30, "color": "#ff8c66"},
       "encoding": {
         "y": {
           "field": "ValuePercent",
           "type": "quantitative",
-          "axis": {"grid": false}
+          "title": "",
+          "axis":{"grid": false}
         },
-        "tooltip":[
-          {"field": "ValuePercent"}
-        ]
+        "tooltip": [{"field": "ValuePercent", "title": "% in Population"}]
       }
     },
     {
-      "mark": {"type": "bar", "xOffset": 18, "size": 30, "color": "darkred"},
+      "mark": {"type": "bar", "xOffset": 15, "size": 30, "color": "darkred"},
       "encoding": {
-        "y": {"field": "PercentOfTotal", "type": "quantitative"},
-        "tooltip":[
-          {"field": "PercentOfTotal", "format": ".2f"}
+        "y": {"field": "PercentOfTotal", "type": "quantitative", "title":"Percent %"},
+        "tooltip": [
+          {
+            "field": "PercentOfTotal",
+            "format": ".2f",
+            "title": "% of Victims"
+          }
         ]
       }
     }

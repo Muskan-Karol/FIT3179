@@ -1,0 +1,199 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {"view": {"stroke": null}, "background": "#fcf2e9"},
+  "data": {
+    "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/Assignment2/bar_chart/data/fatal-police-shooting-race.csv",
+    "name": "police"
+  },
+  "transform": [
+    {"filter": {"field": "race", "oneOf": ["W", "O", "B", "H", "N", "A"]}},
+    {
+      "filter": {
+        "field": "date",
+        "timeUnit": "date",
+        "range": ["31/12/2020", "01/01/2022"]
+      }
+    },
+    {
+      "aggregate": [{"op": "count", "as": "num_victims"}],
+      "groupby": ["raceFullName"]
+    },
+    {
+      "window": [{"op": "sum", "field": "num_victims", "as": "TotalVictims"}],
+      "frame": [null, null]
+    },
+    {
+      "calculate": "datum.num_victims/datum.TotalVictims * 100",
+      "as": "PercentOfTotal"
+    },
+    {
+      "lookup": "raceFullName",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/Assignment2/bar_chart/data/USPopDataPer2021.csv"
+        },
+        "key": "raceFullName",
+        "fields": ["Value", "ValuePercent"]
+      }
+    }
+  ],
+  "vconcat": [
+    {
+      "title": "Victims of police shooting vs % of people in population, by race (2021)",
+      "width": 500,
+      "height": 350,
+      "encoding": {
+        "x": {
+          "field": "raceFullName",
+          "type": "nominal",
+          "axis": {"grid": false, "labelAngle": 0},
+          "title": "Race"
+        }
+      },
+      "layer": [
+        {
+          "mark": {"type": "bar", "xOffset": -15, "size": 30, "color": "lightgrey"},
+          "encoding": 
+          {
+            "y": {
+              "field": "ValuePercent",
+              "type": "quantitative",
+              "title": "",
+              "axis": {"grid": false}
+            },
+            "tooltip": [{"field": "ValuePercent", "title": "% in Population"}]
+          } 
+        },
+        {
+          "mark": {"type": "bar", "xOffset": 15, "size": 30, "color": "darkred"},
+          "params": [{"name": "raceSelection", "select": {"type": "point"}}],
+          "encoding": {
+            "y": {
+              "field": "PercentOfTotal",
+              "type": "quantitative",
+              "title": "Percent %"
+            },
+            "tooltip": [
+              {"field": "PercentOfTotal", "format": ".2f", "title": "% of Victims"}
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "width":500,
+      "title": "Select any red bar to explore by race",
+      "transform": [
+        {
+          "lookup": "raceFullName",
+          "from":{
+            "data": {
+              "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/Assignment2/bar_chart/data/StatsByRaceWide.csv",
+              "name": "csv"
+            },
+            "key": "raceFullName",
+            "fields": ["attack_per"]
+          } 
+        },
+        {"filter": {"param": "raceSelection", "empty": false}}
+      ],
+      "mark":{"type": "bar", "color": "darkred", "opacity": 0.5},
+      "encoding": {
+        "x": {"field": "attack_per", "type": "quantitative","axis":null, "scale": {"domain": [0, 100]}},
+        "y": {
+          "field": "attack_per", 
+          "type": "nominal", 
+          "title": "Attacked", 
+          "axis":{
+            "values": ["Attacked"], 
+            "grid": false,
+            "titleAngle": 0,
+            "titlePadding": 50
+          }
+        },
+        "tooltip":[
+          {"field": "attack_per", "title": "% Attacked Police", "format": ".2f"}
+        ]
+      }
+    },
+    {
+      "width":500,
+      "transform": [
+        {
+          "lookup": "raceFullName",
+          "from":{
+            "data": {
+              "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/Assignment2/bar_chart/data/StatsByRaceWide.csv",
+              "name": "csv"
+            },
+            "key": "raceFullName",
+            "fields": ["unarmed_per"]
+          } 
+        },
+        {"filter": {"param": "raceSelection", "empty": false}}
+      ],
+      "mark":{"type": "bar", "color": "darkred", "opacity": 0.5},
+      "encoding": {
+        "x": {"field": "unarmed_per", "type": "quantitative","axis":null, "scale": {"domain": [0, 100]}},
+        "y": {
+          "field": "unarmed_per", 
+          "type": "nominal", 
+          "title": "Unarmed", 
+          "axis":{"values": ["Unarmed"], "titleAngle": 0, "titlePadding": 50}
+        },
+        "tooltip":[
+          {"field": "unarmed_per", "title": "% Unarmed", "format": ".2f"}
+        ]
+      }
+    },
+    {
+      "width":500,
+      "height":20,
+      "transform": [
+        {
+          "lookup": "raceFullName",
+          "from":{
+            "data": {
+              "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/Assignment2/bar_chart/data/StatsByRaceWide.csv",
+              "name": "csv"
+            },
+            "key": "raceFullName",
+            "fields": ["body_camera_false_per"]
+          } 
+        },
+        {"filter": {"param": "raceSelection", "empty": false}}
+      ],
+      "mark":{"type": "bar", "color": "darkred", "opacity": 0.5},
+      "encoding": {
+        "x": {
+          "field": "body_camera_false_per", 
+          "type": "quantitative",
+          "axis":{"labelAngle": 0, "grid": false}, 
+          "scale": {"domain": [0, 100]},
+          "title":null
+        },
+        "y": {
+          "field": "body_camera_false_per", 
+          "type": "nominal", 
+          "title": "Body Camera Off",
+          "axis":{
+            "values": ["Body Camera Off"], 
+            "grid": false,
+            "labelAngle": 45,
+            "titleAngle": 0,
+            "titlePadding": 50
+          }
+        },
+        "tooltip":[
+          {"field": "body_camera_false_per", "title": "% cases where police body camera was off", "format": ".2f"}
+        ]
+      }
+    }
+  ]
+  
+}
+
+
+
+
+ 

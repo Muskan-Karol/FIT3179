@@ -9,6 +9,12 @@ body {
     font-family: Verdana;
 }
 
+.pure-u-1 img{
+    width: 74vw;
+    height: 23vw;
+    text-align: center;
+}
+
 .pure-u-1-1 {
     margin-top: 100px;
     text-align: center;

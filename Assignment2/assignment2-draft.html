@@ -16,15 +16,19 @@
 <body>
 
   <div class="overall">
+
     <h1> <span style="color: darkred;"> FATAL </span> POLICE SHOOTINGS </h1>
-    <br>
 
-    <div id='text_div'>
-      <p>This will have the intro</p>
+    <div id='section-1'>
+      <p>
+        From 2015 - 2022, <span style="color: darkred; font-size: 20px;"> <b> 7743 </b> </span>
+        people have been killed by police shootings in the United States.
+
+        In this visualisation we will explore these fatal police shootings and their victims
+        
+
+      </p>
     </div>
-
-
-    <br>
 
 
     <div class="pure-u-1-1">
@@ -35,6 +39,7 @@
       </div>
     </div>
 
+    <br>
 
     <div class="pure-g">
       <div class="pure-u-1-2">
@@ -50,19 +55,41 @@
 
     </div>
 
-
-    <br>
     
+    <br>
+    <h2> Imbalance between different <span style="color: darkred;">Race/Ethnicity</span> Groups </h2>
+      
+          
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div id='text_div'>
+          <p> Even though Black people account for 12.4% of the total population in US, they accounted for <span style="color: darkred;"> <b>27.27%</b> </span> of victims of police shootings.</p>
+          <p> While, white people account for 59.2% of the total population and they are 51% of the victims of death by police shootings</p>
+        </div>
+      </div>
 
-    <div class="pure-u-1-1">
-      <h3> Even though Black people account for 12.4% of total population in the US, they were <span style="color: darkred;"> 27.27% </span> of victims of police shootings</h3>
-      <div id="bar_chart">
-
+      <div class="pure-u-1-2">
+        <div id='text_div'>
+          <p> Native Americans are also victims of police shootings at a disproportionate rate when compared to thier percentage of population in the US </p>
+          <p> On average, in 83% of fatal police shootings, the body camera on the police officier was turned off.  </p>
       </div>
     </div>
 
+    <br>
+
+  
     <div class="pure-u-1-1">
-      <h2> Map 2</h2>
+      <span style="text-align:center;">
+        <h3> A <span style="color: darkred;">black</span> person is more likely to be killed by a police officer than a white person</h3>
+        <br>
+      </span>
+      <div id="bar_chart"> </div>
+    </div>
+
+    
+
+    <div class="pure-u-1-1">
+      <h3>In most states, <span style="color: darkred;">black</span> people have the <span style="color: darkred;">highest</span> rate of deaths per 100,000 population</h3>
       <div id="map_2">
 
       </div>
@@ -87,23 +114,22 @@
   </script>
 
   <script type="text/javascript">
-    var spec3 = "bar_chart/js/race_bar_chart.vg.json";
+    var spec3 = "bar_chart/js/bar_chart_combined.vg.json";
     vegaEmbed('#bar_chart', spec3).then(function(result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
   </script>
 
   <script type="text/javascript">
-    var spec3 = "dot_plot/js/dot_plot.vg.json";
-    vegaEmbed('#dot_plot', spec3).then(function(result) {
+    var spec4 = "dot_plot/js/dot_plot.vg.json";
+    vegaEmbed('#dot_plot', spec4).then(function(result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
   </script>
 
   <script type="text/javascript">
-    var spec3 = "map/js/mapByRace.vg.json";
-    vegaEmbed('#map_2', spec3).then(function(result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    var spec6 = "map/js/mapByRace.vg.json";
+    vegaEmbed('#map_2', spec6).then(function(result) {
     }).catch(console.error);
   </script>
 

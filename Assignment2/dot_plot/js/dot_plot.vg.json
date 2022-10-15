@@ -1,10 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "config": {
-    "view": {"stroke": null},
-    "background": "#fcf2e9"
-  },
-  "width": 700,
+  "config": {"view": {"stroke": null}, "background": "#fcf2e9"},
+  "width": 450,
   "height": 150,
   "title": "Female vs Male victims of police shootings, since 2015",
   "data": {
@@ -12,16 +9,13 @@
     "name": "csv"
   },
   "transform": [
-    {
-      "calculate": "{'F': '♀︎', 'M': '♂︎'}[datum.gender]",
-      "as": "emoji"
-    },
+    {"calculate": "{'F': '♀︎', 'M': '♂︎'}[datum.gender]", "as": "emoji"},
     {"window": [{"op": "rank", "as": "rank"}], "groupby": ["country", "animal"]}
   ],
-  "mark":{"type": "text", "baseline": "middle"},
+  "mark": {"type": "text", "baseline": "middle"},
   "encoding": {
     "x": {"field": "rank", "type": "nominal", "axis": null},
     "text": {"field": "emoji", "type": "nominal"},
-    "size": {"value": 60}
+    "size": {"value": 45}
   }
 }

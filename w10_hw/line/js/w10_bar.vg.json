@@ -4,7 +4,7 @@
   "height": 500,
   "title": "fatal shooting in the US by a police officer every 100,000",
   "data":{
-    "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/w10_hw/data/StatsByRace.csv",
+    "url": "https://raw.githubusercontent.com/Muskan-Karol/FIT3179/main/w10_hw/line/data/StatsByRace.csv",
     "name": "csv"       
   },
   "params": [
